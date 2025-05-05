@@ -2,7 +2,7 @@ import {
   Refine,
   Authenticated,
 } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+// import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
@@ -38,6 +38,8 @@ import {
 import { supabaseClient } from "./utility";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { Header } from "./components/header";
+import { PageTitle } from "./components/page-title";
+
 import authProvider from "./providers/authProvider";
 import { Resources, ResourceKeys } from "./resources";
 import { ProjectTitle, DefaultUser } from "./config";
@@ -58,14 +60,14 @@ function App() {
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>
-            <DevtoolsProvider>
+            {/* <DevtoolsProvider> */}
               <Refine
                 dataProvider={dataProvider(supabaseClient)}
                 liveProvider={liveProvider(supabaseClient)}
                 authProvider={authProvider}
                 routerProvider={routerBindings}
                 notificationProvider={useNotificationProvider}
-                i18nProvider={i18nProvider}
+                // i18nProvider={i18nProvider}
                 resources={Resources}
                 options={{
                   syncWithLocation: true,
@@ -83,7 +85,7 @@ function App() {
                       >
                         <ThemedLayoutV2
                           Header={Header}
-                          Title={() => <div>{ProjectTitle}</div>}
+                          Title={PageTitle}
                           Sider={(props) => <ThemedSiderV2 {...props} fixed />}
                         >
                           <Outlet />
@@ -127,16 +129,17 @@ function App() {
                           formProps={{
                             initialValues: DefaultUser,
                           }}
+                          title={<PageTitle />}
                         />
                       }
                     />
                     <Route
                       path="/register"
-                      element={<AuthPage type="register" />}
+                      element={<AuthPage title={<PageTitle />} type="register" />}
                     />
                     <Route
                       path="/forgot-password"
-                      element={<AuthPage type="forgotPassword" />}
+                      element={<AuthPage title={<PageTitle />} type="forgotPassword" />}
                     />
                   </Route>
                 </Routes>
@@ -145,8 +148,8 @@ function App() {
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
+              {/* <DevtoolsPanel /> */}
+            {/* </DevtoolsProvider> */}
           </AntdApp>
         </ColorModeContextProvider>
       </RefineKbarProvider>

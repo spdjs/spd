@@ -24,7 +24,7 @@ A new generation of flexible and scalable medical supply chain system solutions
     pnpm start
 ```
 
-### Provider Concept For Refine
+### Provider Concept For Refine You Should Know
 
 Providers are the building blocks of Refine, used to manage different aspects of your application, such as data fetching, routing, access control, and more.
 
@@ -41,7 +41,7 @@ They are pluggable, which means you can use the built-in providers or create you
 
 ## Learn More
 
-To learn more about **Spd**, please check out the [Documentation](https://refine.dev/docs)
+Below is a list of the main libraries this project depends on.
 
 - **Refine** [Docs](https://refine.dev/docs)
 
